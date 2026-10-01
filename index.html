@@ -1,0 +1,128 @@
+<!DOCTYPE html >
+< html  lang =" vi " >
+< đầu >
+    < meta  charset =" UTF-8 " >
+    < meta  name =" viewport " content =" width=device-width, initial-scale=1.0 " >
+    <title> Chúc mừng sinh nhật lần thứ 17 ! 💙 </title>
+    <style>​​
+        thân hình {
+            hiển thị : flex;
+            căn chỉnh nội dung : ở giữa;
+            căn chỉnh các mục : ở giữa;
+            chiều cao :  100 vh ;
+            background :  linear-gradient ( 135 deg ,  # e0f2fe ,  # bae6fd );
+            lề :  0 ;
+            font-family :  'Arial' , sans-serif;
+            tràn : ẩn;
+            vị trí : tương đối;
+        }
+        .lớp phủ mật khẩu {
+            vị trí : cố định;
+            trên cùng :  0 ; bên trái :  0 ; chiều rộng :  100 % ; chiều cao :  100 % ;
+            background :  linear-gradient ( 135 deg ,  # e0f2fe ,  # bae6fd );
+            hiển thị : flex;
+            flex-direction : column;
+            căn chỉnh nội dung : ở giữa;
+            căn chỉnh các mục : ở giữa;
+            z-index :  100 ;
+            Transition : opacity 1s ease , visibility 1s ease ;​
+        }
+        . hộp mật khẩu {
+            nền : trắng;
+            khoảng đệm :  30px ;
+            bán kính viền :  20px ;
+            box-shadow :  0  10 px  25 px  rgba ( 2 ,  132 ,  199 ,  0.2 );
+            căn chỉnh văn bản : ở giữa;
+            max-width :  90 % ;
+            chiều rộng :  350 px ;
+        }
+        .password -box  h3 { color :  # 0369a1 ; margin - bottom :  20px ; font-size :  18px ; line-height :  1.5 ; }
+        .password -box  input { width :  80 % ; padding :  10px ; border :  2px solid # 38bdf8 ; border-radius :  10px ; font-size : 16px  ; text - align : center; outline : none ; }
+        .password -box  button { margin-top :  15px ; padding :  10px 25px  ; background-color : # 0284c7 ; color : white ; border : none ; border-radius : 10px ; font - size : 16px ; cursor : pointer ; transition : background 0.3s ; }   
+        .main -content { opacity :  0 ; transform :  scale ( 0.9 ); text-align : center; z-index : 10  ; transition : opacity 1.5s ease - in-out , transform 1.5s ease -in-out; max-width :  480px ; padding :  20px ; }
+        .main -content .show { opacity : 1 ; transform : scale ( 1 ); }  
+        .profile - img { width :  140px ; height :  140px ; border-radius : 50 % ; border : 5px solid #fff ; box -shadow : 0 0 20px rgba ( 56 , 189 , 248 , 0.6 ); object -fit : cover; margin -bottom : 15px ; animation : spinAndFloat 6s ease -in-out infinite alternate ; }          
+        h1 { color :  # 0369a1 ; font-size :  28 px ; margin :  5 px  0 ; }
+        . wishes { color :  # 334155 ; font-size :  15 px ; line-height :  1.6 ; background :  rgba ( 255 ,  255 ,  255 ,  0.9 ); padding :  20 px ; border-radius :  15 px ; box-shadow :  0  5 px  15 px  rgba ( 0 , 0 , 0 , 0.05 ); margin-top :  15 px ; text-align : left; }
+        . wishes  p { margin :  0  0  10 px  0 ; }
+        . wishes  p : last-child { margin-bottom :  0 ; }
+        .cake -container { position : relative; width :  160px ; height :  160px ; margin : 15px auto ; display : flex; flex-direction : column; align-items : center ; justify-content : flex-end; } 
+        .age - number { font -size : 36px  ; font - weight : bold; color :  # ef4444 ; position : absolute ; top : -10px ; z - index : 10 ; text - shadow : 2px 2px 0px #fff , -2px -2px 0px #fff ; }          
+        .tier { background -color :  # f8fafc ; border :  3px solid # 0284c7 ; border-bottom : none ; border-radius :  10px 10px  0 0 ; position : relative; box  - shadow : inset 0 -10px 0 # cbd5e1 ; }    
+        .tier -1 { width :  150px ; height :  45px ; z - index :  1 ; }
+        .tier -2 { width :  115px ; height :  38px ; z - index :  2 ; }
+        .tier -3 { width :  80px ; height :  32px ; z - index :  3 ; }
+        .tier :: after { content :  ' ' ; position : absolute; top :  0 ; left :  0 ; width :  100 % ; height :  10px ; background - color :  # 38bdf8 ; border- radius :  0  0  8px 8px  ; }
+        .candle { width :  8px ; height : 20px ; background : linear-gradient (to right , # fbbf24 , # f59e0b ); position : absolute ; top : -20px ; left : 50 % ; transform :  translateX ( -50 % ) ; z- index : 4 ; }       
+        .flame { width : 8px ; height : 12px ; background-color : # ef4444 ; border -radius : 50 % 50 % 20 % 20 % ; position : absolute; top : -12px ; left : 50 % ; transform : translateX ( -50 % ) ; animation : flicker 0.1s infinite alternate ; }          
+        .bubble { position : absolute; bottom : -60px ; background-color : rgba ( 56 , 189 , 248 , 0.35 ) ; border : 1px solid rgba ( 255 , 255 , 255 , 0.5 ); border-radius : 50 % ; animation : flyUp linear infinite; z - index : 1 ; }        
+        @keyframes flicker { 0 % { transform :  translateX ( -50 % ) scale ( 1 ); } 100 % { transform :  translateX ( -50 % ) scale ( 1.2 ); } }
+        @keyframes spinAndFloat { 0 % { transform :  translateY ( 0 ) rotate ( 0 deg ); } 100 % { transform :  translateY ( -8 px ) rotate ( 3 deg ); } }
+        @keyframes flyUp { 0 % { transform :  translateY ( 0 ) scale ( 1 ); opacity :  0 ; } 10 % { opacity :  0.7 ; } 100 % { transform :  translateY ( -110 vh ) scale ( 1.3 ); opacity :  0 ; } }
+    </style>​​
+</head>​​
+<body>​​
+    < audio  id = " bgMusic " src = " https://mixkit.co " loop > </audio>
+    
+    < div  id =" lockScreen " class =" password-overlay " >
+        < div  class =" password-box " >
+            < h3 > 🔒 Bạn nhập ngày tháng mà bạn lưu trữ tiếng ồn đầu tiên: </ h3 >
+            < input  type =" text " id =" passatInput " placeholder =" Nhập câu trả lời tại đây... " >
+            <br>​​
+            < nút  onclick =" checkPassword() " > Mở quà ngay ✨ </ nút >
+        </ div >
+    </ div >
+
+    < div  id =" content " class =" main-content " >
+        < img  class =" profile-img " src =" https://picsum.photos " alt =" Ảnh sinh nhật " >
+        <h1> Chúc mừng sinh nhật lần thứ 17 ! 💙 </h1>
+        
+        < div  class =" cake-container " >
+            < div  class =" age - number " > 17 </div>
+            < div  class = " candle " > < div  class = " flame " > </div> </div>​​
+            < div  class =" tier tier- 3 " > </div>
+            < div  class =" tier tier- 2 " > </div>
+            < div  class =" tier tier- 1 " > </div>
+        </ div >
+
+        < div  class =" wishes " >
+            < p  style =" color: #0284c7 ; font -weight: bold; font-size: 16px; " > 🇰🇷 Tiếng Hàn: </p>
+            < p > 가장 빛나는 17살의 띠야! 네가 뭘 하든 항상 응원해. Bạn có muốn làm điều đó không? 생일 축하해, 미래 của 호텔 사장님! 🎉 </p>​​
+            < hr  style =" border: 0; border-top: 1px dashed #cbd5e1; margin: 15px 0; " >
+            < p  style =" color: #0284c7 ; font -weight: bold; font-size: 16px; " > 🇻🇳 Tiếng Việt: </p>
+            < p > Gửi Thy của tuổi 17 tỏa sáng nhất! Dù làm gì cũng luôn ủng hộ. Sau này giàu thành công thì cấm giả không quen đấy nhé? Sinh nhật vui vẻ nha, bà chủ khách sạn tương lai ! 🏨✨ </p>​​
+        </ div >
+    </ div >
+
+    <script>​​
+        for  ( let  i  =  0 ;  i  <  25 ;  i ++ )  {  createBubble ( ) ;  }
+        hàm  kiểm tra mật khẩu ( )  {
+            const  input  =  document.getElementById ( " passwordInput " ) . value.trim ( ) ;​​
+            nếu  ( đầu vào  ===  "15/10" )  {
+                const  lockScreen  =  tài liệu . getElementById ( "lockScreen" ) ;
+                const  content  =  document.getElementById ( " content " ) ;
+                const  music  =  document.getElementById ( " bgMusic " ) ;
+                lockScreen.style.opacity = " 0 " ;​​  
+                lockScreen.style.visibility = " hidden " ;​​  
+                setTimeout ( ( )  =>  {
+                    content.classList.add ( " show " ) ;​​
+                    âm nhạc . chơi ( ) . Catch ( e  =>  console . log ( "Cần click tương tác phát nhạc" ) ) ;
+                } ,  400 ) ;
+            }  khác  {
+                cảnh báo ( "Sai mất rồi! Thử lại xem nhé bạn ơi 🤫" ) ;
+            }
+        }
+        hàm  tạo bong bóng ( )  {
+            const  bubble  =  document.createElement ( ' div ' ) ;
+            bubble.classList.add ( ' bubble ' ) ;​​
+            const  size  =  Math.random ( ) * 40 + 15 ;​​    
+            bubble.style.width = size + ' px ' ;​​    
+            bubble.style.height = size + ' px ' ;​​    
+            bubble.style.left = Math.random ( ) * 100 + ' vw ' ;​​​​      
+            bubble.style.animationDuration = ( Math.random ( ) * 6 + 5 ) + ' s ' ;​​​​        
+            bubble.style.animationDelay = ( Math.random ( ) * 5 ) + ' s ' ;​​​​      
+            document.body.appendChild ( bubble ) ;​​​​
+        }
+    </script>​​
+</body>​​
+</ html >
