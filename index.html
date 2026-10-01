@@ -61,21 +61,19 @@
     </style>
 </head>
 <body>
-    <!-- Link nhạc chúc mừng sinh nhật online chạy được trên mọi thiết bị -->
-    <audio id="bgMusic" src="https://mixkit.co" loop></audio>
+    <audio id="bgMusic" src="static/happybirthday.mp3" loop></audio>
 
     <div id="lockScreen" class="password-overlay">
         <div class="password-box">
-            <h3>🔒 Bạn hãy nhập ngày tháng sinh nhật của mình để mở quà:</h3>
-            <input type="text" id="passwordInput" placeholder="Nhập 4 số liền nhau (Ví dụ: 1510)...">
+            <h3>🔒 Bạn hãy nhập ngày tháng mà bạn cất tiếng khóc đầu tiên:</h3>
+            <input type="text" id="passwordInput" placeholder="Nhập câu trả lời tại đây...">
             <br>
             <button onclick="checkPassword()">Mở quà ngay ✨</button>
         </div>
     </div>
 
     <div id="content" class="main-content">
-        <!-- Link ảnh đại diện cute tạm thời -->
-        <img class="profile-img" src="https://picsum.photos" alt="Ảnh sinh nhật">
+        <img id="myImage" class="profile-img" src="static/sinhnhat.jpg" alt="Ảnh sinh nhật">
         <h1>Happy 17th Birthday! 💙</h1>
 
         <div class="cake-container">
@@ -88,7 +86,7 @@
 
         <div class="wishes">
             <p style="color: #0284c7; font-weight: bold; font-size: 16px;">🇰🇷 Korean:</p>
-            <p>가장 빛나는 17살 của 띠아! 네가 뭘 하든 항상 응원해. 나중에 성공하면 나 모른 척하기 없기다? 생일 축하해, 미래의 호텔 사장님! 🎉</p>
+            <p>가장 빛나는 17살 của 띠아! 네가 뭘 하든 항상 응원해. 나중에 성공하면 나 모른 척하기 없기다? 생일 축하해, 미래 của khách sạn 사장님! 🎉</p>
             <hr style="border: 0; border-top: 1px dashed #cbd5e1; margin: 15px 0;">
             <p style="color: #0284c7; font-weight: bold; font-size: 16px;">🇻🇳 Vietnamese:</p>
             <p>Gửi Thy của tuổi 17 tỏa sáng nhất! Dù m làm gì t cũng luôn ủng hộ. Sau này giàu có thành công thì cấm giả vờ không quen t đấy nhé? Sinh nhật vui vẻ nha, bà chủ khách sạn tương lai ! 🏨✨</p>
@@ -97,23 +95,35 @@
 
     <script>
         for (let i = 0; i < 25; i++) { createBubble(); }
+        
         function checkPassword() {
             const input = document.getElementById("passwordInput").value.trim();
-            // Mật khẩu nhập đúng là: 1510
-            if (input === "1510") {
+            if (input === "15/10") {
                 const lockScreen = document.getElementById("lockScreen");
                 const content = document.getElementById("content");
                 const music = document.getElementById("bgMusic");
+                
                 lockScreen.style.opacity = "0";
                 setTimeout(() => {
                     lockScreen.style.display = "none";
                     content.classList.add("show");
-                    music.play().catch(e => console.log("Cần tương tác phát nhạc"));
+                    
+                    // Thử phát nhạc, nếu lỗi tự động đổi đường dẫn dự phòng
+                    music.play().catch(() => {
+                        music.src = "happybirthday.mp3";
+                        music.play().catch(e => console.log("Không thể phát nhạc"));
+                    });
                 }, 1000);
             } else {
                 alert("Sai mất rồi! Thử lại xem nhé bạn ơi 🤫");
             }
         }
+
+        // Tự động sửa lỗi ảnh nếu sai đường dẫn thư mục static
+        document.getElementById("myImage").onerror = function() {
+            this.src = "happybirthday.mp3" ? "sinhnhat.jpg" : this.src;
+        };
+
         function createBubble() {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
