@@ -61,7 +61,8 @@
     </style>
 </head>
 <body>
-    <audio id="bgMusic" src="static/happybirthday.mp3" loop></audio>
+    <!-- Gọi file trực tiếp không qua thư mục -->
+    <audio id="bgMusic" src="happybirthday.mp3" loop></audio>
 
     <div id="lockScreen" class="password-overlay">
         <div class="password-box">
@@ -73,7 +74,7 @@
     </div>
 
     <div id="content" class="main-content">
-        <img id="myImage" class="profile-img" src="static/sinhnhat.jpg" alt="Ảnh sinh nhật">
+        <img class="profile-img" src="sinhnhat.jpg" alt="Ảnh sinh nhật">
         <h1>Happy 17th Birthday! 💙</h1>
 
         <div class="cake-container">
@@ -95,35 +96,22 @@
 
     <script>
         for (let i = 0; i < 25; i++) { createBubble(); }
-        
         function checkPassword() {
             const input = document.getElementById("passwordInput").value.trim();
             if (input === "15/10") {
                 const lockScreen = document.getElementById("lockScreen");
                 const content = document.getElementById("content");
                 const music = document.getElementById("bgMusic");
-                
                 lockScreen.style.opacity = "0";
                 setTimeout(() => {
                     lockScreen.style.display = "none";
                     content.classList.add("show");
-                    
-                    // Thử phát nhạc, nếu lỗi tự động đổi đường dẫn dự phòng
-                    music.play().catch(() => {
-                        music.src = "happybirthday.mp3";
-                        music.play().catch(e => console.log("Không thể phát nhạc"));
-                    });
+                    music.play().catch(e => console.log("Cần tương tác phát nhạc"));
                 }, 1000);
             } else {
                 alert("Sai mất rồi! Thử lại xem nhé bạn ơi 🤫");
             }
         }
-
-        // Tự động sửa lỗi ảnh nếu sai đường dẫn thư mục static
-        document.getElementById("myImage").onerror = function() {
-            this.src = "happybirthday.mp3" ? "sinhnhat.jpg" : this.src;
-        };
-
         function createBubble() {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
