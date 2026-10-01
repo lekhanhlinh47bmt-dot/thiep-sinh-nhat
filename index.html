@@ -4,31 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc mừng sinh nhật lần thứ 17 ! 💙</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0f2fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .password-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0284c7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 90%;
+            width: 350px;
+        }
+        .password-box h3 {
+            color: #1e293b;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .password-box input {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .password-box input:focus {
+            border-color: #0284c7;
+        }
+        .password-box button {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .password-box button:hover {
+            background: #0369a1;
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        .wishes {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+    <!-- Nhạc nền sinh nhật vui nhộn -->
     <audio id="bgMusic" src="https://mixkit.co" loop></audio>
+
+    <!-- Màn hình khóa nhập mật khẩu -->
     <div id="lockScreen" class="password-overlay">
         <div class="password-box">
-            <h3>🎂 Bạn nhập ngày tháng năm sinh tụi mình lần đầu gặp nhau tại đây:</h3>
-            <input type="text" id="passwordInput" placeholder="Nhập câu trả lời tại đây...">
+            <h3>🎂 Nhập ngày sinh hoặc ngày tụi mình gặp nhau để mở quà nè:</h3>
+            <input type="text" id="passwordInput" placeholder="Nhập 4 số (Ví dụ: 1510)...">
+            <br>
             <button onclick="checkPassword()">🎁 Mở quà ngay</button>
         </div>
     </div>
 
+    <!-- Nội dung thiệp sinh nhật ẩn bên trong -->
     <div id="content" class="main-content">
         <img class="profile-img" src="https://picsum.photos" alt="Ảnh sinh nhật">
-        <h1>Chúc mừng sinh nhật lần thứ 17 ! 💙</h1>
+        <h1 style="color: #0284c7;">Chúc mừng sinh nhật lần thứ 17 ! 💙</h1>
         
-        <div class="cake-container">
-            <div class="age-number">17</div>
-            <div class="candle">
-                <div class="flame"></div>
-            </div>
-            <div class="tier tier-3"></div>
-            <div class="tier tier-2"></div>
-            <div class="tier tier-1"></div>
-        </div>
-
         <div class="wishes">
             <p style="color: #0284c7; font-weight: bold; font-size: 16px;">🇰🇷 Korean:</p>
             <p>가장 빛나는 17살의 띠아! 네가 뭘 하든 항상 응원해. 배고프면 luôn có đồ ăn nha? 생일 축하해, 미래의 호텔 사장님! 🧑‍🍳</p>
@@ -37,56 +118,35 @@
             <p>Gửi Thy của tuổi 17 tỏa sáng nhất! Dù m làm gì t cũng luôn ủng hộ. Sau này giàu có thành công thì cảm ơn già vờ không quen t đấy nhé? Sinh nhật vui vẻ nha, bà chủ khách sạn tương lai! 🎂✨</p>
         </div>
     </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            var music = document.getElementById("bgMusic");
+            
+            // Bạn có thể đổi số '1510' thành ngày kỷ niệm thật của hai bạn (ví dụ ngày 15 tháng 10)
+            if (password === "1510") { 
+                // Bật nhạc nền
+                music.play().catch(function(error) {
+                    console.log("Trình duyệt chặn tự động phát nhạc, cần click để chạy.");
+                });
+
+                // Ẩn màn hình khóa
+                document.getElementById("lockScreen").style.opacity = "0";
+                setTimeout(function() {
+                    document.getElementById("lockScreen").style.display = "none";
+                    
+                    // Hiển thị nội dung thiệp chúc mừng
+                    var content = document.getElementById("content");
+                    content.style.display = "block";
+                    setTimeout(function() {
+                        content.style.opacity = "1";
+                    }, 50);
+                }, 500);
+            } else {
+                alert("Sai mất rồi! Thử lại xem nè 🥺");
+            }
+        }
+    </script>
 </body>
 </html>
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #e0f2fe;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.password-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #0284c7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    transition: opacity 0.5s;
-}
-
-.password-box {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.main-content {
-    text-align: center;
-    padding: 20px;
-}
-
-.profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.wishes {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 400px;
-    margin-top: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    text-align: left;
-}
