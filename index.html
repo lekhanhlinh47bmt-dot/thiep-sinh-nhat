@@ -4,54 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc mừng sinh nhật lần thứ 17 ! 💙</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #e0f2fe;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .password-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #0284c7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            transition: opacity 0.5s;
-        }
-        .password-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .main-content {
-            text-align: center;
-            padding: 20px;
-        }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .wishes {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 400px;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: left;
-        }
-    </style>
 </head>
 <body>
     <audio id="bgMusic" src="https://mixkit.co" loop></audio>
@@ -67,6 +19,16 @@
         <img class="profile-img" src="https://picsum.photos" alt="Ảnh sinh nhật">
         <h1>Chúc mừng sinh nhật lần thứ 17 ! 💙</h1>
         
+        <div class="cake-container">
+            <div class="age-number">17</div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="tier tier-3"></div>
+            <div class="tier tier-2"></div>
+            <div class="tier tier-1"></div>
+        </div>
+
         <div class="wishes">
             <p style="color: #0284c7; font-weight: bold; font-size: 16px;">🇰🇷 Korean:</p>
             <p>가장 빛나는 17살의 띠아! 네가 뭘 하든 항상 응원해. 배고프면 luôn có đồ ăn nha? 생일 축하해, 미래의 호텔 사장님! 🧑‍🍳</p>
@@ -75,20 +37,56 @@
             <p>Gửi Thy của tuổi 17 tỏa sáng nhất! Dù m làm gì t cũng luôn ủng hộ. Sau này giàu có thành công thì cảm ơn già vờ không quen t đấy nhé? Sinh nhật vui vẻ nha, bà chủ khách sạn tương lai! 🎂✨</p>
         </div>
     </div>
-
-    <script>
-        function checkPassword() {
-            var password = document.getElementById("passwordInput").value;
-            // Thay số 1510 bằng ngày kỷ niệm thực tế của hai bạn (ví dụ ngày 15 tháng 10)
-            if (password === "1510") { 
-                document.getElementById("lockScreen").style.opacity = "0";
-                setTimeout(function() {
-                    document.getElementById("lockScreen").style.display = "none";
-                }, 500);
-            } else {
-                alert("Sai mất rồi! Thử lại xem nè 🥺");
-            }
-        }
-    </script>
 </body>
 </html>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e0f2fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #0284c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.5s;
+}
+
+.password-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.main-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.wishes {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: left;
+}
